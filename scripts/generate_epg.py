@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """
-Generate XMLTV EPG for Sony channels (7 days).
+Generate XMLTV EPG for Sony channels (14 days).
 Runs daily via GitHub Actions.
 """
 
 from datetime import datetime, timedelta, timezone
 import gzip
-import os
 from pathlib import Path
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
@@ -26,12 +25,12 @@ CHANNELS = [
         "icon": "https://i.imgur.com/placeholder-sony-cine.png",
         "category": "Movies",
         "programs": [
-            ("To be announced", "Movies", 120),
-            ("To be announced", "Movies", 120),
-            ("To be announced", "Movies", 120),
-            ("To be announced", "Movies", 120),
-            ("To be announced", "Movies", 120),
-            ("To be announced", "Movies", 120),
+            ("To Be Announced", "Movies", 120),
+            ("To Be Announced", "Movies", 120),
+            ("To Be Announced", "Movies", 120),
+            ("To Be Announced", "Movies", 120),
+            ("To Be Announced", "Movies", 120),
+            ("To Be Announced", "Movies", 120),
         ],
     },
     {
@@ -40,12 +39,12 @@ CHANNELS = [
         "icon": "https://i.imgur.com/placeholder-sony-movies.png",
         "category": "Movies",
         "programs": [
-            ("To be announced", "Movies", 120),
-            ("To be announced", "Movies", 120),
-            ("To be announced", "Movies", 120),
-            ("To be announced", "Movies", 120),
-            ("To be announced", "Movies", 120),
-            ("To be announced", "Movies", 120),
+            ("To Be Announced", "Movies", 120),
+            ("To Be Announced", "Movies", 120),
+            ("To Be Announced", "Movies", 120),
+            ("To Be Announced", "Movies", 120),
+            ("To Be Announced", "Movies", 120),
+            ("To Be Announced", "Movies", 120),
         ],
     },
     {
@@ -54,12 +53,12 @@ CHANNELS = [
         "icon": "https://i.imgur.com/placeholder-comedy-hits.png",
         "category": "Comedy",
         "programs": [
-            ("To be announced", "Comedy", 120),
-            ("To be announced", "Comedy", 120),
-            ("To be announced", "Comedy", 120),
-            ("To be announced", "Comedy", 120),
-            ("To be announced", "Comedy", 120),
-            ("To be announced", "Comedy", 120),
+            ("To Be Announced", "Comedy", 120),
+            ("To Be Announced", "Comedy", 120),
+            ("To Be Announced", "Comedy", 120),
+            ("To Be Announced", "Comedy", 120),
+            ("To Be Announced", "Comedy", 120),
+            ("To Be Announced", "Comedy", 120),
         ],
     },
     {
@@ -68,12 +67,12 @@ CHANNELS = [
         "icon": "https://i.imgur.com/placeholder-action-hits.png",
         "category": "Action",
         "programs": [
-            ("To be announced", "Action", 120),
-            ("To be announced", "Action", 120),
-            ("To be announced", "Action", 120),
-            ("To be announced", "Action", 120),
-            ("To be announced", "Action", 120),
-            ("To be announced", "Action", 120),
+            ("To Be Announced", "Action", 120),
+            ("To Be Announced", "Action", 120),
+            ("To Be Announced", "Action", 120),
+            ("To Be Announced", "Action", 120),
+            ("To Be Announced", "Action", 120),
+            ("To Be Announced", "Action", 120),
         ],
     },
     {
@@ -82,12 +81,12 @@ CHANNELS = [
         "icon": "https://i.imgur.com/placeholder-comedy-tv.png",
         "category": "Comedy",
         "programs": [
-            ("To be announced", "Comedy", 120),
-            ("To be announced", "Comedy", 120),
-            ("To be announced", "Comedy", 120),
-            ("To be announced", "Comedy", 120),
-            ("To be announced", "Comedy", 120),
-            ("To be announced", "Comedy", 120),
+            ("To Be Announced", "Comedy", 120),
+            ("To Be Announced", "Comedy", 120),
+            ("To Be Announced", "Comedy", 120),
+            ("To Be Announced", "Comedy", 120),
+            ("To Be Announced", "Comedy", 120),
+            ("To Be Announced", "Comedy", 120),
         ],
     },
     {
@@ -96,12 +95,12 @@ CHANNELS = [
         "icon": "https://i.imgur.com/placeholder-faves.png",
         "category": "Series",
         "programs": [
-            ("To be announced", "Series", 120),
-            ("To be announced", "Series", 120),
-            ("To be announced", "Series", 120),
-            ("To be announced", "Series", 120),
-            ("To be announced", "Series", 120),
-            ("To be announced", "Series", 120),
+            ("To Be Announced", "Series", 120),
+            ("To Be Announced", "Series", 120),
+            ("To Be Announced", "Series", 120),
+            ("To Be Announced", "Series", 120),
+            ("To Be Announced", "Series", 120),
+            ("To Be Announced", "Series", 120),
         ],
     },
     {
@@ -110,12 +109,12 @@ CHANNELS = [
         "icon": "https://i.imgur.com/placeholder-thriller.png",
         "category": "Thriller",
         "programs": [
-            ("To be announced", "Thriller", 120),
-            ("To be announced", "Thriller", 120),
-            ("To be announced", "Thriller", 120),
-            ("To be announced", "Thriller", 120),
-            ("To be announced", "Thriller", 120),
-            ("To be announced", "Thriller", 120),
+            ("To Be Announced", "Thriller", 120),
+            ("To Be Announced", "Thriller", 120),
+            ("To Be Announced", "Thriller", 120),
+            ("To Be Announced", "Thriller", 120),
+            ("To Be Announced", "Thriller", 120),
+            ("To Be Announced", "Thriller", 120),
         ],
     },
 ]
