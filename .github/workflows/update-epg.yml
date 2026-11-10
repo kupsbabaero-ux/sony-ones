@@ -1,0 +1,37 @@
+name: Update Sony EPG
+
+on:
+  schedule:
+    # Every day at 00:30 UTC
+    - cron: "30 0 * * *"
+  workflow_dispatch:   # manual trigger
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate EPG
+        run: python scripts/generate_epg.py
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add epg/
+          if git diff --staged --quiet; then
+            echo "No changes"
+          else
+            git commit -m "chore: update Sony EPG $(date -u +%Y-%m-%d)"
+            git push
+          fi
